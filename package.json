@@ -6,10 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "nodemon": "nodemon --exec \"yarn build\" -e js,vue --ignore dist/"
+    "dev": "nodemon --exec \"yarn build\" -e js,vue --ignore dist/"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "buefy": "^0.9.4",
     "bulma": "^0.9.1",
     "core-js": "^3.6.5",

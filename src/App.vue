@@ -1,6 +1,8 @@
 <template>
-  <div id="app">    
-    <files :files="visibleBookmarks" @openFolder="openFolder" />
+  <div id="app">  
+    <div class="wrapper">
+      <files :files="visibleBookmarks" @openFolder="openFolder" />
+    </div>  
   </div>
 </template>
 

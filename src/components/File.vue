@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: "File",
   props: {
@@ -43,12 +42,6 @@ export default {
     
   },
   methods: {
-    // getBookmark(){
-    //   const vi = this
-    //   chrome.bookmarks.get(vi.file.id, (results)=> {
-    //     console.log('results', results);
-    //   })
-    // }
     onClick(){
       const vi = this
       if (vi.type == 'file'){
@@ -61,35 +54,11 @@ export default {
     async getFavicon(url){
       const vi = this
       const domain  = url.replace(/.+\/\/|\/.+|\//g, '')
-
-      const imageStorage = JSON.parse(localStorage.getItem('imageStorage'))
-      const correspondingFavicon = imageStorage[domain]
-      if( correspondingFavicon){
-        console.log('Found favicon for', domain);
-        vi.img = correspondingFavicon
-      } else {
-        vi.pullFavicon(domain)
-      }
-      
+      vi.pullFavicon(domain)
     },
     async pullFavicon(domain){
       const vi = this
-      const fulllUrl = `http://favicongrabber.com/api/grab/${domain}?pretty=true`
-      const data = await axios.get(fulllUrl)
-      console.log('data', data.data)
-      let favicon
-      if(data.data.icons && data.data.icons[0] && data.data.icons[0].src){
-        favicon = data.data.icons[0].src
-      } else {
-        favicon = null
-      }
-
-      if(favicon){
-        const imageStorage = JSON.parse(localStorage.getItem('imageStorage'))
-        imageStorage[domain] = favicon
-        localStorage.setItem('imageStorage', JSON.stringify(imageStorage))
-        vi.img = favicon
-      }
+      vi.img = `https://s2.googleusercontent.com/s2/favicons?sz=128&domain=${domain}`
     }
   },
 }

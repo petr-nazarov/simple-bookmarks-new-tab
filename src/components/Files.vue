@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container is-vcentered">
     <div class="columns is-multiline">
-      <div v-for="(file, fileIndex) in files" class="column is-2" :key="fileIndex">
+      <div v-for="(file, fileIndex) in files" class="column is-3" :key="fileIndex">
         <div class="file-container">
           <file :file="file" @openFolder="openFolder" />
         </div>
@@ -35,5 +35,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
