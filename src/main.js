@@ -7,7 +7,7 @@ Vue.use(Buefy)
 
 Vue.filter('title', function (value) {
   if (!value) return ''
-  const allowedLength = 15
+  const allowedLength = 20
   if(value.length > allowedLength){
     return  value.substring(0,allowedLength - 3)+"..."
   } else {

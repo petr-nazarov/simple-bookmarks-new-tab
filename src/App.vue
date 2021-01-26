@@ -2,15 +2,19 @@
   <div id="app">  
     <div class="wrapper">
       <files :files="visibleBookmarks" @openFolder="openFolder" />
-    </div>  
+    </div>
+    <div class="settings-wrapper">
+      <settings />
+    </div>
   </div>
 </template>
 
 <script>
 import Files from "./components/Files"
+import Settings from "./components/Settings"
 export default {
   name: 'App',
-  components: {Files},
+  components: {Files, Settings},
   data() {
     return {
       visibleBookmarks: []
@@ -19,10 +23,14 @@ export default {
   created() {
     const vi = this
     const imageStorage = localStorage.getItem('imageStorage')
+    let parentShortcutsDirrectoryId = localStorage.getItem('parentShortcutsDirrectoryId')
     if (!imageStorage) {
       localStorage.setItem('imageStorage', '{}')
     }
-    vi.openFolder('1')
+    if (!parentShortcutsDirrectoryId) {
+      parentShortcutsDirrectoryId = '1'
+    }
+    vi.openFolder(parentShortcutsDirrectoryId)
   },
   methods: {
     openFolder(id = '1') {
@@ -39,4 +47,12 @@ export default {
 
 <style lang="scss">
 @import './assets/styles/main.scss';
+.settings-wrapper{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  width: 100%;
+}
 </style>

@@ -1,18 +1,16 @@
 <template>
   <div class="button is-white file-container" @click="onClick">
     <template v-if="type === 'folder'">
-      <b-icon
-        pack="fas"
-        icon="folder"
-        size="is-medium">
-      </b-icon>
+      <i class="fas fa-folder folder-icon"></i>
     </template>
     <template v-if="type === 'file'">
       <figure v-if="img" class="image is-32x32">
         <img :src="img">
       </figure>
     </template>
-    {{file.title | title }}
+    <p>
+      {{file.title | title }}
+    </p>
   </div>
 </template>
 
@@ -71,5 +69,9 @@ export default {
     align-items: center;
     padding-top: 2em;
     padding-bottom: 2em;
+  }
+
+  .folder-icon{
+    font-size: 2em;
   }
 </style>
