@@ -1,7 +1,7 @@
 {
-  "name": "Start Page",
+  "name": "Simple Bookmarks New Tab",
   "version": "0.1",
-  "description": "Build an Extension!",
+  "description": "This is a simple bookmarks start page extension for your Google Chrome browser.",
   "manifest_version": 2,
   "chrome_url_overrides" : {
     "newtab": "index.html"
@@ -9,5 +9,8 @@
   "permissions": [
     "bookmarks",
     "https://s2.googleusercontent.com/*"
-  ]
+  ],
+  "icons": {
+    "128": "favicon.ico"
+  }
 }
